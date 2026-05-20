@@ -26,9 +26,13 @@ pipeline {
                 // Ensure scripts are executable
                 sh 'chmod +x jenkins_pipeline/scripts/*.sh'
 
-                // Copy .env files from local system to Jenkins workspace
-                sh 'cp /Users/charanb/Downloads/final_ui/.env . || echo ".env not found on host"'
-                sh 'cp /Users/charanb/Downloads/final_ui/frontend/.env frontend/ || echo "frontend/.env not found on host"'
+                // Load .env files securely from Jenkins Credentials
+                withCredentials([file(credentialsId: 'BACKEND_ENV_FILE', variable: 'BACKEND_ENV')]) {
+                    sh 'cp $BACKEND_ENV .env'
+                }
+                withCredentials([file(credentialsId: 'FRONTEND_ENV_FILE', variable: 'FRONTEND_ENV')]) {
+                    sh 'cp $FRONTEND_ENV frontend/.env'
+                }
             }
         }
 
