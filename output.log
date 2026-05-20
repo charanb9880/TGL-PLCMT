@@ -1,0 +1,75 @@
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/langgraph/cache/base/__init__.py:8: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects='messages' or allowed_objects='core') to suppress this warning.
+  from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+
+🚀 STARTING INTELLIGENCE PIPELINE FOR: Tesla
+============================================================
+🕵️  [INPUT NODE] Preparing research for: Tesla
+
+--- STATE UPDATE FROM [prepare] ---
+------------------------------
+🤖 [GEN NODE] Gemini starting research...
+🤖 [GEN NODE] OpenAI starting research...
+🤖 [GEN NODE] OpenRouter starting research...
+
+--- STATE UPDATE FROM [gemini_gen] ---
+Generation from gemini_gen complete.
+------------------------------
+
+--- STATE UPDATE FROM [router_gen] ---
+Generation from router_gen complete.
+------------------------------
+
+--- STATE UPDATE FROM [openai_gen] ---
+Generation from openai_gen complete.
+------------------------------
+🛡️  [VAL NODE] OpenRouter validating...
+🛡️  [VAL NODE] OpenAI validating...
+🛡️  [VAL NODE] Gemini validating...
+
+--- STATE UPDATE FROM [router_val] ---
+Validation for router_val complete.
+------------------------------
+
+--- STATE UPDATE FROM [gemini_val] ---
+Validation for gemini_val complete.
+------------------------------
+
+--- STATE UPDATE FROM [openai_val] ---
+Validation for openai_val complete.
+------------------------------
+🤝  [CONSOLIDATION NODE] Merging data into Golden Record...
+   ↳ Merged 163 fields into Golden Record.
+
+--- STATE UPDATE FROM [consolidate] ---
+Golden Record has 163 fields.
+------------------------------
+🛡️  [NULL RECOVERY NODE] Scanning for missing critical data...
+   ⚠️ Missing 163 fields out of 163. Attempting recovery...
+   ❌ Recovery Error: Connection error.
+     🛠️  Fallback: Logo -> https://logo.clearbit.com/tesla.com
+     🛠️  Fallback: Category -> Optimized / Standard Industry Data
+     🛠️  Fallback: Overview of the Company -> Tesla is a growth-stage enterprise focused on delivering high-impact solutions and driving industry innovation.
+     🛠️  Fallback: Company Headquarters -> Optimized / Standard Industry Data
+     🛠️  Fallback: Employee Size -> 100-500 employees (Estimated)
+     🛠️  Fallback: Website URL -> https://tesla.com
+     🛠️  Fallback: LinkedIn Profile URL -> https://linkedin.com/company/tesla
+     🛠️  Fallback: Twitter (X) Handle -> https://x.com/tesla
+     🛠️  Fallback: Facebook Page URL -> https://facebook.com/tesla
+     🛠️  Fallback: Instagram Page URL -> https://instagram.com/tesla
+     🛠️  Fallback: Company Contact Email -> contact@tesla.com
+     🛠️  Fallback: Annual Revenues -> Confidential / Market Estimated
+     🛠️  Fallback: Tech Stack/Tools Used -> Modern Cloud-Native Stack (SaaS, AWS/Azure, AI-Ready)
+🚦  [ROUTER] Running Final Validation on Golden Record...
+   ↳ ✅ Final Validation PASSED. Routing to SAVE.
+
+--- STATE UPDATE FROM [recover] ---
+------------------------------
+💾  [SAVE NODE] Persisting to DB and Local Storage...
+❌ Supabase Insertion Error: {'message': "Could not find the 'annual_profits' column of 'company' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}
+   ↳ ✅ Local copy saved to: research_outputs/tesla_intelligence.json
+
+--- STATE UPDATE FROM [save] ---
+------------------------------
+============================================================
+🏁 PIPELINE EXECUTION COMPLETE.
+

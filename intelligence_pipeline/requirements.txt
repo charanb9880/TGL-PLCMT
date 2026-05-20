@@ -1,0 +1,12 @@
+langgraph
+langchain
+langchain-core
+langchain-openai
+langchain-google-genai
+langchain-groq
+supabase
+python-dotenv
+asyncio
+duckduckgo-search
+ddgs
+langchain-community

@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 240 10% 4%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 4%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 10% 4%;
+        --primary: 220 100% 50%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 240 9% 96%;
+        --secondary-foreground: 240 10% 4%;
+        --muted: 240 9% 96%;
+        --muted-foreground: 240 5% 45%;
+        --accent: 240 9% 96%;
+        --accent-foreground: 240 10% 4%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 240 6% 90%;
+        --input: 240 6% 90%;
+        --ring: 220 100% 50%;
+        --chart-1: 220 100% 50%;
+        --chart-2: 217 19% 27%;
+        --chart-3: 240 4% 46%;
+        --chart-4: 160 84% 39%;
+        --chart-5: 38 92% 50%;
+        --radius: 1rem;
+    }
+
+    * {
+        @apply border-border;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-background text-foreground antialiased;
+        font-family: "Manrope", sans-serif;
+        margin: 0;
+        min-height: 100vh;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Outfit", sans-serif;
+    }
+
+    #root {
+        min-height: 100vh;
+    }
+
+    ::selection {
+        background: rgba(0, 85, 255, 0.14);
+        color: #09090b;
+    }
+
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
+
+@layer utilities {
+    .glass-surface {
+        @apply border border-white/60 bg-white/75 backdrop-blur-xl;
+    }
+
+    .balanced-copy {
+        text-wrap: balance;
+    }
+}

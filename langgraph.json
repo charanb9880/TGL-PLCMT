@@ -1,0 +1,7 @@
+{
+  "dependencies": ["./intelligence_pipeline"],
+  "graphs": {
+    "pes_intelligence": "./intelligence_pipeline/graph.py:build_graph"
+  },
+  "env": ".env"
+}

@@ -1,0 +1,105 @@
+{
+  "theme_and_archetype": {
+    "theme": "LIGHT",
+    "archetype": "4 (Swiss & High-Contrast)",
+    "vibe": "Authority, clarity, truth. Apple-level minimalism combined with Notion-like data density.",
+    "core_philosophy": "Color exists only to guide action. 95% of the UI should be structural grayscale. High density where needed (company details), generous breathing room between major frame sections."
+  },
+  "typography": {
+    "strategy": "The 'Soft Utility' + 'Swiss Brutalist' Hybrid",
+    "heading_font": "Outfit",
+    "body_font": "Manrope",
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tighter leading-none font-medium",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight leading-tight font-medium",
+      "h3": "text-xl sm:text-2xl tracking-tight font-medium",
+      "body": "text-base leading-relaxed text-zinc-700",
+      "labels": "text-xs tracking-[0.2em] uppercase font-bold text-zinc-500"
+    }
+  },
+  "color_palette": {
+    "backgrounds": {
+      "base": "#FFFFFF",
+      "subtle": "#F4F4F5",
+      "glass": "bg-white/70 backdrop-blur-xl border border-white/40"
+    },
+    "text": {
+      "primary": "#09090B",
+      "secondary": "#71717A",
+      "disabled": "#A1A1AA"
+    },
+    "accents": {
+      "primary": "#0055FF",
+      "primary_hover": "#0044CC",
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "danger": "#EF4444",
+      "border": "#E4E4E7"
+    }
+  },
+  "layout_and_spacing": {
+    "strategy": "Frame-by-Frame Scroll Experience",
+    "frame_container": "h-screen w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth",
+    "frame_section": "h-screen w-full snap-start flex flex-col justify-center relative p-8 md:p-16 lg:p-24",
+    "grid_system": {
+      "dashboard_mode": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6",
+      "bento_marketing": "grid grid-cols-1 md:grid-cols-8 lg:grid-cols-12 gap-8"
+    },
+    "surfaces": "Neumorphic 'Clay & Crisp' for dashboard widgets: flat #FAFAFA background, 1px #E4E4E7 border, subtle ambient shadow. No pure transparent overlays without blur."
+  },
+  "ui_components": {
+    "buttons": "Sharp corners or subtle 4px radius. High contrast. Primary uses #0055FF with white text. Hover states must explicitly define text color.",
+    "cards": "Cardless or strictly rectangular flat borders. No massive drop shadows. Use 1px solid stroke (border-zinc-200) to define edges.",
+    "navigation": "Sticky glassmorphism header (z-50). Vertical sticky dot-navigation for the 10-frame Company Detail page.",
+    "forms_and_filters": "Shadcn/UI components heavily customized to look flat, dense, and Notion-like. No native inputs.",
+    "charts": "Shadcn chart components (Recharts). Accessible monochrome or high-contrast brand color palettes.",
+    "icons": "lucide-react"
+  },
+  "motion_and_interaction": {
+    "library": "framer-motion",
+    "rules": [
+      "Smooth scroll snapping is mandatory.",
+      "Scroll-triggered subtle fade-in-up for content inside frames.",
+      "Micro-interactions on hover (slight lift -translate-y-0.5, border darken).",
+      "Respect prefers-reduced-motion."
+    ]
+  },
+  "media_and_images": {
+    "strategy": "Images should act as atmospheric background plates or structural visual anchors. Never generic stock.",
+    "overlay_rule": "Max overlay opacity bg-white/40 over images. Text must use drop-shadow if contrast is borderline.",
+    "image_urls": {
+      "hero_background": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/edd86608-501a-4efe-94f1-869bc5bdae3c/images/77f43fe808e7a2ebcf127ed7f180548b90795fb0624c6ad95ec7d74a97f19bc5.png",
+        "description": "Minimalist Apple-style abstract 3D composition with frosted glass. Use as the main background for the Home Hero Frame."
+      },
+      "tech_detail": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/edd86608-501a-4efe-94f1-869bc5bdae3c/images/42a9d539f832d915ddac5a27d2356048564f6d224f5e5e9c9a3136d36c1bb5ae.png",
+        "description": "Sleek tech device macro photography. Use for the 'Tech Giants' category tile or Technology Frame background."
+      },
+      "modern_office": {
+        "url": "https://images.pexels.com/photos/34746047/pexels-photo-34746047.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Contemporary glass building facade. Use for the 'Enterprise/Corporate' category or Company Overview frames."
+      },
+      "abstract_data": {
+        "url": "https://images.unsplash.com/photo-1765046255479-669cf07a0230?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNDR8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMHRlY2hub2xvZ3klMjBkYXRhJTIwdmlzdWFsaXphdGlvbnxlbnwwfHx8fDE3NzY2MDg4NzZ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract white wavy lines on soft background. Use as a subtle texture for the Analytics Dashboard or Skill Mapping Tool frame."
+      }
+    }
+  },
+  "data_and_architecture_rules": {
+    "strictly_enforced": [
+      "There is ONE database table: public.company.",
+      "Map UI fields EXACTLY 1:1 to columns. Do not rename, combine, or invent fields.",
+      "No hardcoded mock data for the UI rendering. The app must scale from 1 to 1000+ companies dynamically.",
+      "PWA setup is mandatory: service worker, offline fallback, installable."
+    ],
+    "testing": "All interactive and key informational elements MUST include a data-testid attribute (kebab-case, role-based)."
+  },
+  "instructions_to_main_agent": [
+    "Build the UI focusing heavily on the CSS snap-scroll architecture first to ensure the 'Frame-by-Frame' requirement works perfectly.",
+    "Use the provided image_urls for visual anchors as requested in the 'Visual Intelligence' directive.",
+    "Integrate Shadcn primitives heavily for the Notion-like density in the 10-frame Company Details view.",
+    "Ensure the Excel ingestion logic dynamically creates PostgreSQL columns matching the Excel headers exactly via Supabase.",
+    "Apply the Light Theme + Archetype 4 design tokens rigidly. Avoid adding unrequested colors. Stick to high-contrast monochrome with blue accents."
+  ]
+}

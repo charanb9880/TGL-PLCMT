@@ -1,0 +1,23 @@
+{
+  "short_name": "Placement IQ",
+  "name": "PES Placement Intelligence",
+  "description": "Enterprise placement intelligence PWA for company exploration, analytics, comparison, and skill mapping.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f5",
+  "theme_color": "#0055ff",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
