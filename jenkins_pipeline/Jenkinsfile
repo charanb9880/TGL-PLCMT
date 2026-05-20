@@ -25,6 +25,10 @@ pipeline {
                 
                 // Ensure scripts are executable
                 sh 'chmod +x jenkins_pipeline/scripts/*.sh'
+
+                // Copy .env files from local system to Jenkins workspace
+                sh 'cp /Users/charanb/Downloads/final_ui/.env . || echo ".env not found on host"'
+                sh 'cp /Users/charanb/Downloads/final_ui/frontend/.env frontend/ || echo "frontend/.env not found on host"'
             }
         }
 
