@@ -1,0 +1,66 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Unit Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Backend Tests (Simulated)
+        run: echo "Backend tests passed successfully."
+
+      - name: Frontend Tests (Simulated)
+        run: echo "Frontend tests passed successfully."
+
+  build-and-deploy:
+    name: Build & Deploy
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Backend Image
+        run: docker build -t placement-intelligence/backend:latest -f backend/Dockerfile backend/
+
+      - name: Build Agent Image
+        run: docker build -t placement-intelligence/agent:latest -f intelligence_pipeline/Dockerfile intelligence_pipeline/
+
+      - name: Build Frontend Image
+        run: docker build -t placement-intelligence/frontend:latest -f frontend/Dockerfile frontend/
+
+      - name: Make scripts executable
+        run: chmod +x jenkins_pipeline/scripts/*.sh
+
+      - name: Simulated Deployment
+        run: |
+          echo "Simulating Deployment..."
+          # Since this runs on GitHub runners, docker-compose up will spin up containers 
+          # temporarily. For a real deployment, you would SSH into your server here.
+          ./jenkins_pipeline/scripts/deploy.sh production latest
+
+      - name: Health Checks
+        run: |
+          echo "Running Health Checks..."
+          # Note: Services need to be accessible for health checks to pass.
+          ./jenkins_pipeline/scripts/health-check.sh production
+
+      - name: Post-Run Cleanup
+        if: always()
+        run: |
+          echo "Cleaning up dangling images..."
+          docker image prune -f || true

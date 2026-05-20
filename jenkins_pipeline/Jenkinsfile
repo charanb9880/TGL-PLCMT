@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label ''
-            // Run directly in the project folder to avoid all macOS copy deadlock errors
-            customWorkspace '/Users/charanb/Downloads/final_ui'
-        }
-    }
+    agent any
 
     environment {
         // Fix "docker: command not found" by including Mac Docker paths
