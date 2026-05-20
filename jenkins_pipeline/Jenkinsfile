@@ -28,10 +28,10 @@ pipeline {
 
                 // Load .env files securely from Jenkins Credentials
                 withCredentials([file(credentialsId: 'BACKEND_ENV_FILE', variable: 'BACKEND_ENV')]) {
-                    sh 'cp $BACKEND_ENV .env'
+                    sh 'rm -f .env && cat $BACKEND_ENV > .env || cp -f $BACKEND_ENV .env'
                 }
                 withCredentials([file(credentialsId: 'FRONTEND_ENV_FILE', variable: 'FRONTEND_ENV')]) {
-                    sh 'cp $FRONTEND_ENV frontend/.env'
+                    sh 'rm -f frontend/.env && cat $FRONTEND_ENV > frontend/.env || cp -f $FRONTEND_ENV frontend/.env'
                 }
             }
         }
